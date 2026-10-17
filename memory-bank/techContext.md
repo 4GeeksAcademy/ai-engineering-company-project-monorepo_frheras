@@ -1,73 +1,73 @@
 # Tech Context — TrackFlow
 
-> Basado exclusivamente en la información de `CONTEXT.md`. Fecha: 2026-10-17.
+> Based exclusively on information from `CONTEXT.md`. Date: 2026-10-17.
 
 ---
 
-## Stack tecnológico base
+## Technology Stack
 
-### Estado actual (arquitectura heredada)
+### Current State (Legacy Architecture)
 
-| Componente                  | Descripción                                                                                            |
-| --------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **WMS (SGA) — Los Ángeles** | Software comercial de gestión de almacenes                                                             |
-| **WMS (SGA) — Zaragoza**    | Hoja de cálculo avanzada                                                                               |
-| **ERP corporativo**         | Sistema de principios de la década de 2010                                                             |
-| **Integraciones**           | Scripts de Python punto a punto, sin documentar                                                        |
-| **Bases de datos**          | En dos proveedores cloud distintos                                                                     |
-| **Telemetría**              | No existe centralizada. Cuando algo falla en Los Ángeles, el equipo en Zaragoza se entera por WhatsApp |
-| **Despliegue**              | Una nueva funcionalidad tarda entre una y dos semanas en desplegarse                                   |
+| Component                    | Description                                                                                          |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **WMS — Los Angeles**        | Commercial warehouse management software                                                             |
+| **WMS — Zaragoza**           | Advanced spreadsheet                                                                                 |
+| **Corporate ERP**            | System from the early 2010s                                                                          |
+| **Integrations**             | Point-to-point Python scripts, undocumented                                                          |
+| **Databases**                | In two different cloud providers                                                                     |
+| **Telemetry**                | No centralized system. When something fails in Los Angeles, the Zaragoza team finds out via WhatsApp |
+| **Deployment**               | A new feature takes one to two weeks to deploy                                                       |
 
-### Stack objetivo (lo que necesita la compañía)
+### Target Stack (What the Company Needs)
 
-El mandato de TrackFlow Tech incluye construir:
+TrackFlow Tech's mandate includes building:
 
-- **API de inventario unificada** — stock en tiempo real de cualquier SKU en cualquiera de los dos almacenes.
-- **Pipeline de ingesta de pedidos** — parseo automático de emails con formatos de cliente variables.
-- **Motor de selección de transportista** — recomendación óptima según destino, peso y urgencia.
-- **Endpoint unificado de tracking** — agregación de estado desde 8 APIs de transportistas distintas.
-- **Portal de seguimiento público** — para destinatarios de paquetes.
-- **Motor de aprobación automática de devoluciones** — con reglas configurables por cliente.
-- **Sistema de inspección asistido por IA** — clasificación por imagen del estado del producto devuelto.
-- **Agente CX de primera línea** — resolución automática de consultas de tracking y devoluciones.
-- **Base de conocimiento semántica** — indexada para RAG, soporte multiidioma (español + inglés).
-- **Sistema de tickets unificado** — para atención al cliente.
-- **CRM con perfiles unificados de cliente** — informes PDF automáticos y dashboard de salud.
-- **Telemetría y logging centralizados** — ambos países.
-- **Pipeline de datos** — alimentando todos los dashboards de la empresa.
-- **Monitorización en tiempo real** — alertas automáticas.
-- **Dashboard ejecutivo global** — KPIs en tiempo real, comparativas por país, informe semanal automático.
-- **Asistente de IA en lenguaje natural** — para el CEO.
-- **Agente de documentación técnica** — para el equipo de tecnología.
-- **Automatización de tareas de operaciones** — backups, health checks, notificaciones de incidencias.
+- **Unified Inventory API** — real-time stock for any SKU in either warehouse.
+- **Order Ingestion Pipeline** — automatic parsing of emails with varying client formats.
+- **Carrier Selection Engine** — optimal recommendation based on destination, weight, and urgency.
+- **Unified Tracking Endpoint** — status aggregation from 8 different carrier APIs.
+- **Public Tracking Portal** — for package recipients.
+- **Automatic Returns Approval Engine** — with configurable per-client rules.
+- **AI-Assisted Inspection System** — image-based classification of returned product condition.
+- **First-Line CX Agent** — automatic resolution of tracking and returns queries.
+- **Semantic Knowledge Base** — indexed for RAG, multilingual support (Spanish + English).
+- **Unified Ticketing System** — for customer support.
+- **CRM with Unified Client Profiles** — automatic PDF reports and health dashboard.
+- **Centralized Telemetry and Logging** — both countries.
+- **Data Pipeline** — feeding all company dashboards.
+- **Real-Time Monitoring** — automatic alerts.
+- **Global Executive Dashboard** — real-time KPIs, country comparisons, automatic weekly report.
+- **Natural Language AI Assistant** — for the CEO.
+- **Technical Documentation Agent** — for the technology team.
+- **Operations Task Automation** — backups, health checks, incident notifications.
 
-## Decisiones arquitectónicas (implícitas en el contexto)
+## Architectural Decisions (Implicit in the Context)
 
-1. **Monorepo** — El repositorio actual es un monorepo con carpetas por capa (`uis/`, `services/`, `agents/`, `data/`, `workflows/`, etc.).
-2. **API centralizada (FastAPI)** — Según `README.md`, se recomienda un único backend FastAPI como punto de entrada.
-3. **Agentes de IA** — Los agentes se alojan en `agents/` con habilidades reutilizables en `skills/` y servidores MCP en `mcps/`.
-4. **Flujos de automatización** — n8n para orquestación cross-system (`workflows/`).
-5. **Tipos compartidos** — `packages/shared/` con `@repo/shared-types` para interfaces comunes.
-6. **Docker Compose** — Descrito en `README.md` como orquestación local desde la raíz del repositorio, pero el archivo `docker-compose.yml` aún no existe (pendiente de crear).
+1. **Monorepo** — The current repository is a monorepo with layer-based folders (`uis/`, `services/`, `agents/`, `data/`, `workflows/`, etc.).
+2. **Centralized API (FastAPI)** — According to `README.md`, a single FastAPI backend is recommended as the entry point.
+3. **AI Agents** — Agents live in `agents/` with reusable skills in `skills/` and MCP servers in `mcps/`.
+4. **Automation Flows** — n8n for cross-system orchestration (`workflows/`).
+5. **Shared Types** — `packages/shared/` with `@repo/shared-types` for common interfaces.
+6. **Docker Compose** — Described in `README.md` as local orchestration from the repository root, but the `docker-compose.yml` file does not exist yet (pending creation).
 
-## Restricciones
+## Constraints
 
-- **Dos países, dos idiomas** — Los sistemas deben funcionar en EE. UU. e España, con soporte opcional pero recomendado de español e inglés.
-- **8 carriers distintos** — Cada uno con su propia API y formato de tracking (UPS, FedEx, DHL, MRW, SEUR, etc.).
-- **Legacy sin documentar** — El ERP, los scripts Python y las bases de datos existentes carecen de documentación.
-- **Sin telemetría centralizada** — No hay visibilidad del estado de los sistemas en tiempo real.
-- **Equipo reducido** — El equipo de tecnología son 7 personas en Zaragoza.
-- **Sistemas 24/7** — Los clientes esperan sus paquetes sin interrupción; el CX agent, tracking portal y dashboards deben estar siempre disponibles.
-- **Volumen de devoluciones 18–25%** — La logística inversa representa una fracción significativa del volumen total.
+- **Two countries, two languages** — Systems must work in the US and Spain, with optional but recommended support for Spanish and English.
+- **8 different carriers** — Each with its own API and tracking format (UPS, FedEx, DHL, MRW, SEUR, etc.).
+- **Undocumented legacy** — The ERP, Python scripts, and existing databases lack documentation.
+- **No centralized telemetry** — No real-time visibility into system status.
+- **Small team** — The technology team is 7 people in Zaragoza.
+- **24/7 systems** — Clients expect their parcels without interruption; the CX agent, tracking portal, and dashboards must be always available.
+- **18–25% returns volume** — Reverse logistics represents a significant fraction of total volume.
 
-## Equipo de tecnología
+## Technology Team
 
-| Rol                   | Detalle                                                |
-| --------------------- | ------------------------------------------------------ |
-| **CTO**               | Andrés Kim, desde Zaragoza                             |
-| **Tamaño del equipo** | 7 personas (desarrolladores, data engineers, sistemas) |
-| **Ubicación**         | Zaragoza, España (oficina de tecnología)               |
+| Role                  | Detail                                                      |
+| --------------------- | ---------------------------------------------------------- |
+| **CTO**               | Andrés Kim, based in Zaragoza                              |
+| **Team size**         | 7 people (developers, data engineers, systems)             |
+| **Location**          | Zaragoza, Spain (technology office)                        |
 
 ---
 
-_Fuente: [CONTEXT.md](../CONTEXT.md), [README.md](../README.md) — Documento interno de 4Geeks Academy · AI Engineering Track._
+_Source: [CONTEXT.md](../CONTEXT.md), [README.md](../README.md) — Internal document of 4Geeks Academy · AI Engineering Track._

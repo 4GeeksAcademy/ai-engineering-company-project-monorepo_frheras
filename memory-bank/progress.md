@@ -1,125 +1,125 @@
 # Progress — TrackFlow
 
-> Basado exclusivamente en la información de `CONTEXT.md` y `README.md`. Fecha: 2026-10-17.
+> Based exclusively on information from `CONTEXT.md` and `README.md`. Date: 2026-10-17.
 
 ---
 
-## Estado actual del desarrollo
+## Current Development Status
 
-### Organización
+### Organization
 
-Daniel ha creado una unidad interna llamada **TrackFlow Tech** con un mandato claro: construir los sistemas, integraciones y automatizaciones inteligentes que permitan a TrackFlow operar como la empresa logística moderna que necesita ser.
+Daniel has created an internal unit called **TrackFlow Tech** with a clear mandate: build the systems, integrations, and intelligent automations that allow TrackFlow to operate as the modern logistics company it needs to become.
 
-### Estado del repositorio
+### Repository Status
 
-> El repositorio actualmente proporciona una **estructura base de carpetas y un esqueleto de documentación únicamente**. No incluye aplicaciones ejecutables ni scripts globales.
+> The repository currently provides a **base folder structure and documentation skeleton** only. It does not include runnable apps or global scripts.
 
-- `CONTEXT.md` ya contiene el contexto completo de TrackFlow (reemplazando el placeholder original de la plantilla).
-- No hay un `AGENTS.md` raíz todavía.
-- Existe metadata de paquetes compartidos en `packages/shared/package.json` (`@repo/shared-types`), pero **no hay un workspace runner configurado en la raíz**.
+- `CONTEXT.md` already contains the full TrackFlow context (replacing the original template placeholder).
+- `AGENTS.md` exists at root with rules for coding agents.
+- Shared package metadata exists in `packages/shared/package.json` (`@repo/shared-types`), but **no workspace runner is configured at root**.
 
-### Lo que ya existe (estructura)
+### What Already Exists (Structure)
 
-| Carpeta      | Propósito                               | Estado    |
-| ------------ | --------------------------------------- | --------- |
-| `uis/`       | Interfaces de usuario (frontends)       | Esqueleto |
-| `services/`  | API centralizada FastAPI                | Esqueleto |
-| `data/`      | Datos, pipelines, evaluación            | Esqueleto |
-| `agents/`    | Agentes de IA (+ `_template/`)          | Esqueleto |
-| `skills/`    | Capacidades reutilizables para agentes  | Esqueleto (skill `data-analysis` funcional con script pandas y métricas de referencia) |
-| `mcps/`      | Servidores MCP (Model Context Protocol) | Esqueleto |
-| `workflows/` | Flujos de automatización (n8n)          | Esqueleto |
-| `packages/`  | Librerías compartidas                   | Esqueleto (con tipos compartidos reales en `packages/shared/`) |
-| `shared/`    | Assets compartidos sueltos              | Esqueleto |
-| `docs/`      | Documentación transversal               | Esqueleto |
-| `infra/`     | Infraestructura y despliegue            | Esqueleto |
-| `scripts/`   | Scripts de ayuda                        | Esqueleto |
-| `internal/`  | Herramientas internas de desarrollo     | Esqueleto |
+| Folder       | Purpose                                  | Status    |
+| ------------ | ---------------------------------------- | --------- |
+| `uis/`       | User interfaces (frontends)              | Skeleton  |
+| `services/`  | Centralized FastAPI API                   | Skeleton  |
+| `data/`      | Data, pipelines, evaluation              | Skeleton  |
+| `agents/`    | AI agents (+ `_template/`)               | Skeleton  |
+| `skills/`    | Reusable agent capabilities              | Skeleton (functional `data-analysis` skill with pandas script and reference metrics) |
+| `mcps/`      | MCP servers (Model Context Protocol)     | Skeleton  |
+| `workflows/` | Automation flows (n8n)                   | Skeleton  |
+| `packages/`  | Shared libraries                         | Skeleton (with real shared types in `packages/shared/`) |
+| `shared/`    | Loose shared assets                      | Skeleton  |
+| `docs/`      | Cross-cutting documentation              | Skeleton  |
+| `infra/`     | Infrastructure and deployment            | Skeleton  |
+| `scripts/`   | Helper scripts                           | Skeleton  |
+| `internal/`  | Internal developer tools                 | Skeleton  |
 
-### Problemas actuales de la compañía (sin resolver)
+### Current Company Problems (Unsolved)
 
-1. **Sin visibilidad de inventario global** — Los dos almacenes no pueden ver el stock del otro.
-2. **Pedidos entrantes manuales** — Llegan por email en distintos formatos y se transcriben a mano.
-3. **Picking en papel** — Listas impresas, sin digitalización.
-4. **Asignación manual de transportistas** — Sin criterio objetivo ni histórico de rendimiento.
-5. **Tracking fragmentado** — Cada transportista tiene su propio portal; no hay un endpoint unificado.
-6. **Devoluciones revisadas una por una** — Sin criterios automáticos de aprobación.
-7. **Inspección subjetiva** — Sin asistencia de IA para clasificar el estado del producto devuelto.
-8. **80% de consultas de CX resolubles automáticamente** — Pero todas las responde un humano.
-9. **Sin CRM** — Los account managers usan hojas de cálculo personales e hilos de email.
-10. **Informes manuales** — El CEO recibe un informe consolidado los lunes con datos de 1–2 días de antigüedad.
-11. **Sin telemetría centralizada** — Cuando algo falla, el equipo se entera por WhatsApp.
-12. **Despliegue lento** — 1–2 semanas para desplegar una nueva funcionalidad.
-13. **Sin base de conocimiento** — Los agentes de CX consultan un documento de Word en Google Drive.
-
----
-
-## Siguientes pasos
-
-Basados en las necesidades expresadas por cada departamento en `CONTEXT.md`:
-
-### 1. 🚚 Operaciones de Almacén
-
-- [ ] API de inventario unificada (stock en tiempo real para cualquier SKU en ambos almacenes)
-- [ ] Pipeline de ingesta de pedidos (parseo automático de emails)
-- [ ] Dashboard de operaciones de almacén
-- [ ] Alertas de stock bajo (notificaciones a cliente y equipo de compras)
-
-### 2. 📦 Última Milla y Transportistas
-
-- [ ] Motor de selección de transportista (recomendación óptima según destino, peso y urgencia)
-- [ ] Endpoint unificado de tracking (agregación desde 8 carriers)
-- [ ] Portal de seguimiento público para destinatarios
-- [ ] Dashboard de rendimiento de transportistas
-
-### 3. 🔄 Logística Inversa
-
-- [ ] Motor de aprobación automática de devoluciones (reglas configurables por cliente)
-- [ ] Flujo automatizado de recogida (aprobación → etiqueta → programación con transportista)
-- [ ] Sistema de inspección asistido por IA (fotografía → clasificación del estado)
-- [ ] Dashboard de devoluciones con análisis de patrones
-
-### 4. 📞 Experiencia del Cliente (CX)
-
-- [ ] Agente CX de primera línea (resolución automática de tracking y devoluciones)
-- [ ] Base de conocimiento semántica indexada para RAG
-- [ ] Sistema de tickets unificado
-- [ ] Dashboard de CX en tiempo real
-- [ ] Análisis de sentimiento (detección de clientes frustrados)
-- [ ] Soporte multiidioma (español + inglés, empezando por un idioma base)
-
-### 5. 🤝 Comercial y Clientes
-
-- [ ] CRM con perfiles unificados de cliente
-- [ ] Informes PDF automáticos para clientes (generados por agente)
-- [ ] Dashboard de salud de cliente (puntuación de riesgo de renovación)
-- [ ] Alertas a 90 y 30 días del vencimiento del contrato
-- [ ] Agente comercial (sugerencia de servicios y precios para prospectos)
-
-### 6. 💻 Tecnología
-
-- [ ] Telemetría y logging centralizados (ambos países)
-- [ ] Pipeline de datos (alimentando todos los dashboards)
-- [ ] Monitorización en tiempo real con alertas automáticas
-- [ ] Agente de documentación técnica
-- [ ] Automatización de tareas de operaciones (backups, health checks, notificaciones)
-
-### 7. 📊 Dirección Ejecutiva
-
-- [ ] Dashboard ejecutivo global con KPIs en tiempo real
-- [ ] Informe semanal generado automáticamente (lunes a las 7:00)
-- [ ] Comparativas por país
-- [ ] Alertas por umbrales
-- [ ] Asistente de IA en lenguaje natural para el CEO
+1. **No global inventory visibility** — The two warehouses cannot see each other's stock.
+2. **Manual inbound orders** — They arrive by email in different formats and are manually transcribed.
+3. **Paper-based picking** — Printed lists, no digitization.
+4. **Manual carrier assignment** — No objective criteria or historical performance data.
+5. **Fragmented tracking** — Each carrier has its own portal; no unified endpoint.
+6. **Returns reviewed one by one** — No automatic approval criteria.
+7. **Subjective inspection** — No AI assistance to classify returned product condition.
+8. **80% of CX queries automatically resolvable** — But all are answered by a human.
+9. **No CRM** — Account managers use personal spreadsheets and email threads.
+10. **Manual reporting** — The CEO receives a consolidated report on Mondays with data 1–2 days old.
+11. **No centralized telemetry** — When something fails, the team finds out via WhatsApp.
+12. **Slow deployment** — 1–2 weeks to deploy a new feature.
+13. **No knowledge base** — CX agents consult a Word document on Google Drive.
 
 ---
 
-## Notas
+## Next Steps
 
-- Este registro se actualizará a medida que se desarrollen los diferentes sistemas, agentes e integraciones.
-- Las prioridades deben definirse con el equipo (no se especifica orden de prioridad en `CONTEXT.md`).
-- Cada nuevo servicio, agente o pipeline debe documentarse en su propia subcarpeta con su `README.md`.
+Based on the needs expressed by each department in `CONTEXT.md`:
+
+### 1. 🚚 Warehouse Operations
+
+- [ ] Unified inventory API (real-time stock for any SKU in both warehouses)
+- [ ] Order ingestion pipeline (automatic email parsing)
+- [ ] Warehouse operations dashboard
+- [ ] Low-stock alerts (notifications to client and procurement team)
+
+### 2. 📦 Last Mile and Carriers
+
+- [ ] Carrier selection engine (optimal recommendation based on destination, weight, and urgency)
+- [ ] Unified tracking endpoint (aggregation from 8 carriers)
+- [ ] Public tracking portal for recipients
+- [ ] Carrier performance dashboard
+
+### 3. 🔄 Reverse Logistics
+
+- [ ] Automatic returns approval engine (configurable per-client rules)
+- [ ] Automated collection flow (approval → label → carrier schedule)
+- [ ] AI-assisted inspection system (photograph → condition classification)
+- [ ] Returns dashboard with pattern analysis
+
+### 4. 📞 Customer Experience (CX)
+
+- [ ] First-line CX agent (automatic resolution of tracking and returns queries)
+- [ ] Semantic knowledge base indexed for RAG
+- [ ] Unified ticketing system
+- [ ] Real-time CX dashboard
+- [ ] Sentiment analysis (detection of frustrated customers)
+- [ ] Multilingual support (Spanish + English, starting from one base language)
+
+### 5. 🤝 Commercial and Clients
+
+- [ ] CRM with unified client profiles
+- [ ] Automatic client PDF reports (agent-generated)
+- [ ] Client health dashboard (renewal risk score)
+- [ ] 90 and 30-day renewal alerts
+- [ ] Commercial agent (suggest relevant services and pricing for prospects)
+
+### 6. 💻 Technology
+
+- [ ] Centralized telemetry and logging (both countries)
+- [ ] Data pipeline (feeding all company dashboards)
+- [ ] Real-time monitoring with automatic alerts
+- [ ] Technical documentation agent
+- [ ] Operations task automation (backups, health checks, incident notifications)
+
+### 7. 📊 Executive Direction
+
+- [ ] Global executive dashboard with real-time KPIs
+- [ ] Automatically generated weekly report (Monday at 7:00)
+- [ ] Country comparison views
+- [ ] Threshold alerts
+- [ ] Natural language AI assistant for the CEO
 
 ---
 
-_Fuente: [CONTEXT.md](../CONTEXT.md), [README.md](../README.md) — Documento interno de 4Geeks Academy · AI Engineering Track._
+## Notes
+
+- This record will be updated as the different systems, agents, and integrations are developed.
+- Priorities must be defined with the team (no priority order is specified in `CONTEXT.md`).
+- Each new service, agent, or pipeline must be documented in its own subfolder with its `README.md`.
+
+---
+
+_Source: [CONTEXT.md](../CONTEXT.md), [README.md](../README.md) — Internal document of 4Geeks Academy · AI Engineering Track._
