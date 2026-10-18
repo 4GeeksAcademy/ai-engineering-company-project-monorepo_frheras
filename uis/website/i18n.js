@@ -19,13 +19,19 @@
     en: {
       'meta.title': 'TrackFlow — Last-Mile Delivery & Warehouse Management | United States & Spain',
       'meta.title.app': 'TrackFlow — Apply | Last-Mile Delivery & Warehouse Management',
+      'meta.description': 'TrackFlow is a last-mile delivery and warehouse management company founded in 2009. We store, pick, pack, ship and return e-commerce orders across the United States and Spain.',
+      'meta.description.app': 'Request information about TrackFlow\'s last-mile delivery and warehouse management services for your e-commerce brand across the United States and Spain.',
+      'meta.og.title': 'TrackFlow — Last-Mile Delivery & Warehouse Management | United States & Spain',
+      'meta.og.title.app': 'TrackFlow — Apply | Last-Mile Delivery & Warehouse Management',
+      'meta.og.description': 'TrackFlow is a last-mile delivery and warehouse management company founded in 2009. We store, pick, pack, ship and return e-commerce orders across the United States and Spain.',
+      'meta.og.description.app': 'Request information about TrackFlow\'s last-mile delivery and warehouse management services for your e-commerce brand across the United States and Spain.',
+      'meta.og.locale': 'en_US',
       'skip.link': 'Skip to main content',
       'nav.services': 'Services',
       'nav.why': 'Why TrackFlow',
       'nav.locations': 'Locations',
       'nav.contact': 'Contact',
       'nav.apply': 'Apply now',
-      'nav.menu': 'Open menu',
       'nav.toggle': 'Show or hide navigation',
       'nav.close': 'Hide navigation',
       'sidebar.tagline': '2 warehouses · 8 carriers · US & Spain',
@@ -156,7 +162,7 @@
       'form.err.country': 'Select your main operating country',
       'form.err.product': 'Select the product type you handle',
       'form.err.volume': 'Select your estimated monthly shipment volume',
-      'form.err.services': 'Select at least one service of interest',
+      'form.err.services': 'Select at least one service',
       'form.err.3pl': 'Indicate whether you currently work with another logistics provider',
       'form.err.comments': 'Comments cannot exceed 500 characters',
       'form.err.comments.dynamic': 'Comments cannot exceed 500 characters ({remaining} remaining)',
@@ -171,13 +177,19 @@
     es: {
       'meta.title': 'TrackFlow — Logística de última milla y gestión de almacenes | Estados Unidos y España',
       'meta.title.app': 'TrackFlow — Solicita información | Logística de última milla y gestión de almacenes',
+      'meta.description': 'TrackFlow es una empresa de logística de última milla y gestión de almacenes fundada en 2009. Almacenamos, preparamos, empaquetamos, enviamos y devolvemos pedidos de e-commerce entre Estados Unidos y España.',
+      'meta.description.app': 'Solicita información sobre los servicios de logística de última milla y gestión de almacenes de TrackFlow para tu marca de e-commerce en Estados Unidos y España.',
+      'meta.og.title': 'TrackFlow — Logística de última milla y gestión de almacenes | Estados Unidos y España',
+      'meta.og.title.app': 'TrackFlow — Solicita información | Logística de última milla y gestión de almacenes',
+      'meta.og.description': 'TrackFlow es una empresa de logística de última milla y gestión de almacenes fundada en 2009. Almacenamos, preparamos, empaquetamos, enviamos y devolvemos pedidos de e-commerce entre Estados Unidos y España.',
+      'meta.og.description.app': 'Solicita información sobre los servicios de logística de última milla y gestión de almacenes de TrackFlow para tu marca de e-commerce en Estados Unidos y España.',
+      'meta.og.locale': 'es_ES',
       'skip.link': 'Saltar al contenido principal',
       'nav.services': 'Servicios',
       'nav.why': 'Por qué TrackFlow',
       'nav.locations': 'Ubicaciones',
       'nav.contact': 'Contacto',
       'nav.apply': 'Solicita ahora',
-      'nav.menu': 'Abrir menú',
       'nav.toggle': 'Mostrar u ocultar navegación',
       'nav.close': 'Ocultar navegación',
       'sidebar.tagline': '2 almacenes · 8 transportistas · EE. UU. y España',
@@ -308,7 +320,7 @@
       'form.err.country': 'Selecciona el país de operación principal',
       'form.err.product': 'Selecciona el tipo de producto que manejas',
       'form.err.volume': 'Selecciona el volumen mensual estimado',
-      'form.err.services': 'Selecciona al menos un servicio de interés',
+      'form.err.services': 'Selecciona al menos un servicio',
       'form.err.3pl': 'Indica si actualmente trabajas con otro proveedor logístico',
       'form.err.comments': 'Los comentarios no pueden exceder 500 caracteres',
       'form.err.comments.dynamic': 'Los comentarios no pueden exceder 500 caracteres (quedan {remaining})',
@@ -349,7 +361,7 @@
     // Update rich markup flagged with data-i18n-html
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-html');
-      if (key && dir()[key] !== undefined) {
+      if (key && dir()[key] !== undefined && el.innerHTML !== dir()[key]) {
         el.innerHTML = dir()[key];
       }
     });
@@ -359,6 +371,14 @@
       var key = el.getAttribute('data-i18n-placeholder');
       if (key && dir()[key] !== undefined) {
         el.setAttribute('placeholder', dir()[key]);
+      }
+    });
+
+    // Update meta content flagged with data-i18n-content (description, OG, etc.)
+    document.querySelectorAll('meta[data-i18n-content]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-content');
+      if (key && dir()[key] !== undefined) {
+        el.setAttribute('content', dir()[key]);
       }
     });
 

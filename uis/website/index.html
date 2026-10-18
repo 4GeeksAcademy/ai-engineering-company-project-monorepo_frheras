@@ -3,16 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%232563EB'/%3E%3Cpath%20d='M7%2013h11l2-3h3l2%203'%20fill='none'%20stroke='%23F8FAFC'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M12%2019h-2l-1-3h13l2%203h-5M9%2022.5a1.5%201.5%200%201%200%200-3a1.5%201.5%200%200%200%200%203Zm14%200a1.5%201.5%200%201%200%200-3a1.5%201.5%200%200%200%200%203Z'%20fill='%23F8FAFC'/%3E%3C/svg%3E">
   <title data-i18n="meta.title">TrackFlow — Last-Mile Delivery &amp; Warehouse Management | United States &amp; Spain</title>
-  <meta name="description" content="TrackFlow is a last-mile delivery and warehouse management company founded in 2009. We store, pick, pack, ship and return e-commerce orders across the United States and Spain.">
+  <meta name="description" content="TrackFlow is a last-mile delivery and warehouse management company founded in 2009. We store, pick, pack, ship and return e-commerce orders across the United States and Spain."
+        data-i18n-content="meta.description">
   <meta name="author" content="TrackFlow">
+  <meta name="robots" content="index, follow">
 
-  <!-- Schema.org: Organization (data grounded in CONTEXT.md; provisional contact details are marked TODO) -->
+  <!-- Canonical URL — provisional domain, pending D9 real data -->
+  <link rel="canonical" href="https://www.trackflowlogistics.com/index.html"><!-- TODO(D9): use real domain -->
+
+  <!-- Open Graph (bilingual via i18n.js data-i18n-content) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TrackFlow">
+  <meta property="og:title" content="TrackFlow — Last-Mile Delivery &amp; Warehouse Management | United States &amp; Spain" data-i18n-content="meta.og.title">
+  <meta property="og:description" content="TrackFlow is a last-mile delivery and warehouse management company founded in 2009. We store, pick, pack, ship and return e-commerce orders across the United States and Spain." data-i18n-content="meta.og.description">
+  <meta property="og:url" content="https://www.trackflowlogistics.com/index.html">
+  <meta property="og:locale" content="en_US" data-i18n-content="meta.og.locale">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TrackFlow — Last-Mile Delivery &amp; Warehouse Management | United States &amp; Spain" data-i18n-content="meta.og.title">
+  <meta name="twitter:description" content="TrackFlow is a last-mile delivery and warehouse management company founded in 2009. We store, pick, pack, ship and return e-commerce orders across the United States and Spain." data-i18n-content="meta.og.description">
+
+  <meta name="theme-color" content="#101D35">
+
+  <!-- Schema.org: Organization + WebSite (data grounded in CONTEXT.md; provisional contact details are marked TODO) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "TrackFlow",
+    "url": "https://www.trackflowlogistics.com",
     "description": "Last-mile delivery and warehouse management for e-commerce brands. TrackFlow stores inventory, picks and packs orders, ships them through a network of carriers and manages returns across the United States and Spain.",
     "foundingDate": "2009",
     "founder": {
@@ -35,6 +57,16 @@
       "telephone": "+1-213-555-0149",
       "availableLanguage": ["English", "Spanish"]
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "TrackFlow",
+    "url": "https://www.trackflowlogistics.com",
+    "inLanguage": ["en", "es"],
+    "description": "Last-mile delivery and warehouse management for e-commerce brands across the United States and Spain."
   }
   </script>
 
@@ -109,7 +141,7 @@
   <div id="sidebar-overlay" class="fixed inset-0 z-30 hidden bg-ink/40 backdrop-blur-sm" aria-hidden="true"></div>
 
   <!-- ======= MAIN COLUMN ======= -->
-  <div id="main-wrap">
+  <div id="main-wrap" class="lg:pl-64">
 
     <!-- Top bar: sidebar toggle + breadcrumb brand + language selector -->
     <header class="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-edge bg-card/95 px-4 shadow-sm backdrop-blur sm:px-6">
