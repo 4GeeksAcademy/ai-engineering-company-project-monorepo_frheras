@@ -34,6 +34,12 @@ Before creating any commit, execute these **5 steps in order**:
 ### Step 1 — Validate target folder
 Read the root `README.md` and the *"Where should I put this?"* section
 to confirm that the changes are being made in the correct folder.
+
+**Expected application routes (future code):**
+- Frontend public website → `uis/website/`
+- Frontend internal admin → `uis/backoffice/`
+- Backend APIs and workers → `services/`
+
 If a new file is not in its corresponding folder, do not continue
 until it is relocated.
 

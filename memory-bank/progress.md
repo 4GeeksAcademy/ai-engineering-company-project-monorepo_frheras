@@ -16,17 +16,20 @@ Daniel has created an internal unit called **TrackFlow Tech** with a clear manda
 
 - `CONTEXT.md` already contains the full TrackFlow context (replacing the original template placeholder).
 - `AGENTS.md` exists at root with rules for coding agents.
+- `pre-commit-validation` workflow skill exists in `.agents/skills/` for automating the AGENTS.md pre-commit flow.
+- 3 business skills (`carrier-performance-analysis`, `returns-condition-classifier`, `weekly-executive-report`) are located in `skills/` alongside the existing development skills.
 - Shared package metadata exists in `packages/shared/package.json` (`@repo/shared-types`), but **no workspace runner is configured at root**.
 
 ### What Already Exists (Structure)
 
 | Folder       | Purpose                                  | Status    |
 | ------------ | ---------------------------------------- | --------- |
-| `uis/`       | User interfaces (frontends)              | Skeleton  |
-| `services/`  | Centralized FastAPI API                   | Skeleton  |
+| `uis/website`    | Public-facing web presence (frontend)     | Skeleton  |
+| `uis/backoffice` | Internal admin application (frontend)     | Skeleton  |
+| `services/`      | Centralized FastAPI API                    | Skeleton  |
 | `data/`      | Data, pipelines, evaluation              | Skeleton  |
 | `agents/`    | AI agents (+ `_template/`)               | Skeleton  |
-| `skills/`    | Reusable agent capabilities              | Skeleton (functional `data-analysis` skill with pandas script and reference metrics) |
+| `skills/`    | Reusable agent capabilities              | Skeleton (includes `data-analysis`, `carrier-performance-analysis`, `returns-condition-classifier`, `weekly-executive-report`, and `code-review` skills) |
 | `mcps/`      | MCP servers (Model Context Protocol)     | Skeleton  |
 | `workflows/` | Automation flows (n8n)                   | Skeleton  |
 | `packages/`  | Shared libraries                         | Skeleton (with real shared types in `packages/shared/`) |
